@@ -12,7 +12,7 @@
 
 
 do_start () {
-    /usr/bin/fbi -T 1 -noverbose -a /shared/splash.jpg
+    /usr/bin/fbi -T 1 -noverbose -a /boot/splash.jpg
     exit 0
 }
 
