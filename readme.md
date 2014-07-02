@@ -13,7 +13,8 @@ Download and burn raspbian onto an sd card, from your local machine
 
 ### Configure raspbian
 
-Use raspi-config on first boot like normal, then update everything
+Use raspi-config to change the keyboard layout and enable ssh.
+Now, update everything.
 
     sudo apt-get update
     sudo apt-get upgrade
