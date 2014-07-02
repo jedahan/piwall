@@ -1,0 +1,63 @@
+# piwall setup
+
+### Install raspbian
+
+    curl -OL http://downloads.raspberrypi.org/raspbian_latest -o raspbian.zip
+    unzip raspbian.zip
+    sudo dd bs=1m if=2014-06-20-wheezy-raspbian.img of=/dev/rdisk1
+
+### Configure raspbian
+
+Use raspi-config on first boot like normal, then update everything
+
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo raspi-config upgrade
+
+### Add a shared partition
+
+Add a fat32 W95 (0x0B) partition where the free space was
+
+    sudo apt-get install dosfstools
+    sudo cfdisk /dev/mmcblk0
+    sudo mkfs.msdos /dev/mmcblk0p3
+
+Mount as /shared on boot
+
+    sudo mkdir /shared
+    sudo chown pi:pi /shared
+    sudo sh -c "echo '/dev/mmcblk0p3    /mnt/storage    vfat    auto,rw,user,users,exec,noatime,uid=1000,gid=1000,umask=000    0    0' >> /etc/fstab"
+    sudo mount -a
+
+### Install the shared files
+
+    cp -r shared/* /shared
+
+### Install a splash screen
+
+    sudo apt-get install fbi
+    sudo cp -r initscripts/asplashscreen /etc/init.d
+    sudo update-rc.d asplashscreen defaults
+
+
+### Install piwall
+
+These packages were downloaded from [dl.piwall.co.uk](dl.piwall.co.uk)
+
+    sudo dpkg -i packages/*
+
+### Configure the server
+
+Make sure we can convert video
+
+    sudo apt-get install libav-tools
+
+Install the init script
+
+    sudo cp -r initscripts/piwallserver /etc/init.d
+    sudo update-rc.d piwallserver defaults
+
+### Configure the tiles
+
+    sudo cp -r initscripts/piwalltile /etc/init.d
+    sudo update-rc.d piwalltile defaults
