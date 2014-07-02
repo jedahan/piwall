@@ -35,6 +35,11 @@ Mount as /shared on boot
     sudo sh -c "echo '/dev/mmcblk0p3    /mnt/storage    vfat    auto,rw,user,users,exec,noatime,uid=1000,gid=1000,umask=000    0    0' >> /etc/fstab"
     sudo mount -a
 
+### Clone this respository
+
+    git clone https://github.com/jedahan/piwall.git
+    cd piwall
+
 ### Install the shared files
 
     cp -r shared/* /shared
