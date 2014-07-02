@@ -53,7 +53,7 @@ Mount as /shared on boot
 
 ### Hide the boot text
 
-    sudo sed -e 's/tty1/tty3' -e 's/$/ loglevel=3 vt.global_cursor_default=0' -i /boot/cmdline.txt
+    sudo sed -e 's/tty1/tty3' -e 's/$/ loglevel=3 vt.global_cursor_default=0 logo.nologo' -i /boot/cmdline.txt
 
 ### Install piwall
 
