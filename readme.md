@@ -51,14 +51,20 @@ Mount as /shared on boot
     sudo cp -r initscripts/asplashscreen /etc/init.d
     sudo update-rc.d asplashscreen defaults
 
-
 ### Install piwall
 
 These packages were downloaded from [dl.piwall.co.uk](dl.piwall.co.uk)
 
     sudo dpkg -i packages/*
 
-### Configure the server
+## For the tiles
+
+Install the init script
+
+    sudo cp -r initscripts/piwalltile /etc/init.d
+    sudo update-rc.d piwalltile defaults
+
+## For the Server
 
 Make sure we can convert video
 
@@ -68,8 +74,3 @@ Install the init script
 
     sudo cp -r initscripts/piwallserver /etc/init.d
     sudo update-rc.d piwallserver defaults
-
-### Configure the tiles
-
-    sudo cp -r initscripts/piwalltile /etc/init.d
-    sudo update-rc.d piwalltile defaults
