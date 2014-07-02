@@ -51,6 +51,10 @@ Mount as /shared on boot
     sudo cp -r initscripts/asplashscreen /etc/init.d
     sudo update-rc.d asplashscreen defaults
 
+### Hide the boot text
+
+    sudo sed -e 's/tty1/tty3' -e 's/$/ loglevel=3 vt.global_cursor_default=0' -i /boot/cmdline.txt
+
 ### Install piwall
 
 These packages were downloaded from [dl.piwall.co.uk](dl.piwall.co.uk)
