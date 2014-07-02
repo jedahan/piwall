@@ -18,18 +18,18 @@ Now, update everything.
 
     sudo apt-get update
     sudo apt-get upgrade
-    sudo raspi-config upgrade
 
 ### Add a shared partition
 
-Add a fat32 W95 (0x0B) partition where the free space was
+Add a 0B (W95 FAT32) partition where the free space was
 
     sudo apt-get install dosfstools
     sudo cfdisk /dev/mmcblk0
-    sudo mkfs.msdos /dev/mmcblk0p3
+    sudo reboot
 
 Mount as /shared on boot
 
+    sudo mkfs.msdos /dev/mmcblk0p3
     sudo mkdir /shared
     sudo chown pi:pi /shared
     sudo sh -c "echo '/dev/mmcblk0p3    /mnt/storage    vfat    auto,rw,user,users,exec,noatime,uid=1000,gid=1000,umask=000    0    0' >> /etc/fstab"
