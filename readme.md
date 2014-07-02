@@ -2,9 +2,14 @@
 
 ### Install raspbian
 
+Download and burn raspbian onto an sd card, from your local machine
+
     curl -OL http://downloads.raspberrypi.org/raspbian_latest -o raspbian.zip
     unzip raspbian.zip
+    sudo diskutil umount /dev/rdisk1s1
     sudo dd bs=1m if=2014-06-20-wheezy-raspbian.img of=/dev/rdisk1
+    sudo diskutil umount /dev/rdisk1s1
+    sudo diskutil eject /dev/rdisk1
 
 ### Configure raspbian
 
