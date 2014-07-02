@@ -43,7 +43,7 @@ Mount as /shared on boot
 
 ### Install the shared files
 
-    cp -r shared/* /shared
+    cp shared/* /shared
 
 ### Install a splash screen
 
