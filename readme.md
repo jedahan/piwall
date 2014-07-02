@@ -79,3 +79,11 @@ Install the init script
 
     sudo cp -r initscripts/piwallserver /etc/init.d
     sudo update-rc.d piwallserver defaults
+
+### Change the networking
+
+Make sure to choose different octets for each pi
+
+    sudo cp /etc/network/interfaces{,.bak}
+    sudo cp interfaces /etc/network/
+    sudo nano /etc/network/interfaces
