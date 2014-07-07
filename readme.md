@@ -76,12 +76,17 @@ These packages were downloaded from [dl.piwall.co.uk](dl.piwall.co.uk)
 
     sudo dpkg -i packages/*
 
-## For the tiles
+## For each the tiles
 
 Install the init script
 
-    sudo cp -r initscripts/piwalltile /etc/init.d
+    sudo cp -r init/*tile* /etc/init.d
     sudo update-rc.d piwalltile defaults
+
+Change the config to be correct for each tile
+
+    sudo nano /etc/init.d/starttile.sh
+
 
 ## For the Server
 
@@ -91,13 +96,21 @@ Make sure we can convert video
 
 Install the init script
 
-    sudo cp -r initscripts/piwallserver /etc/init.d
+    sudo cp -r initscripts/*server* /etc/init.d
     sudo update-rc.d piwallserver defaults
 
 ### Change the networking
 
-Make sure to choose different octets for each pi
+Install the network changing scripts
 
     sudo cp /etc/network/interfaces{,.bak}
-    sudo cp interfaces /etc/network/
-    sudo nano /etc/network/interfaces
+    alias lan=/home/pi/piwall/network/localnetwork.sh
+    alias wan=/home/pi/piwall/network/globalnetwork.sh
+
+Make sure to choose different octets for each pi
+
+    nano network/interfaces.local
+
+Now you can switch just by doing `lan` or `wan`
+
+    lan
