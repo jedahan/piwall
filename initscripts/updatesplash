@@ -1,0 +1,38 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          updatesplash
+# Required-Start:
+# Required-Stop:
+# Should-Start:
+# Default-Start:     $all
+# Default-Stop:
+# Short-Description: Update splashscreen from shared partition
+# Description:       Update splashscreen from shared partition
+### END INIT INFO
+
+SOURCE=/shared/splash.jpg
+DESTINATION=/etc/splash.jpg
+
+do_start () {
+		[ -f $SOURCE ] && sudo cp -fv $SOURCE $DESTINATION || exit 0
+}
+
+case "$1" in
+	start|"")
+		do_start
+		;;
+	restart|reload|force-reload)
+		echo "Error: argument '$1' not supported" >&2
+		exit 3
+		;;
+	stop)
+		# No-op
+		;;
+	status)
+		exit 0
+		;;
+	*)
+		echo "Usage: asplashscreen [start|stop]" >&2
+		exit 3
+		;;
+esac

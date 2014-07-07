@@ -1,4 +1,16 @@
-# piwall setup
+# Changing the videos and splash screens
+
+## Changing the video
+
+Place test.avi in the 'Untitled' volume.
+
+## Changing the splash screen
+
+Place splash.jpg in the 'Untitled' volume. It will take 2 full boots for the screen to be fully updated.
+
+# Setting up from scratch
+
+Here are all the steps required to get from a blank sd card to this working setup.
 
 ### Install raspbian
 
@@ -24,6 +36,7 @@ Use raspi-config to change the keyboard layout and enable ssh.
 
     sudo apt-get update
     sudo apt-get upgrade
+    sudo rpi-update
 
 ### Add a shared partition
 
@@ -43,14 +56,15 @@ Mount as /shared on boot
 
 ### Install the shared files
 
-    sudo cp boot/* /boot/
     cp shared/* /shared/
 
-### Install a splash screen
+### Install a splash screen & the splash screen updater
 
     sudo apt-get install fbi
-    sudo cp -r initscripts/asplashscreen /etc/init.d
+    sudo cp -r initscripts/splashscreen /etc/init.d
     sudo update-rc.d asplashscreen defaults
+    sudo cp -r initscripts/updatesplash /etc/init.d
+    sudo update-rc.d updatesplash defaults
 
 ### Hide the boot text
 
