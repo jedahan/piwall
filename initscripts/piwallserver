@@ -13,6 +13,7 @@
 DIR=/home/pi/piwall/
 DAEMON=$DIR/startserver.sh
 DAEMON_NAME=piwallserver
+DELAY=7
 
 DAEMON_USER=pi
 PIDFILE=/var/run/$DAEMON_NAME.pid
@@ -20,8 +21,9 @@ PIDFILE=/var/run/$DAEMON_NAME.pid
 . /lib/lsb/init-functions
 
 do_start () {
-    log_daemon_msg "Starting  $DAEMON_NAME daemon"
-    start-stop-daemon --start  --background --pidfile $PIDFILE --make-pidfile $PIDFILE --user $DAEMON_USER  --exec $DAEMON
+    log_daemon_msg "Starting  $DAEMON_NAME in ${DELAY}s"
+    sleep $DELAY
+    start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile $PIDFILE --user $DAEMON_USER --exec $DAEMON
     log_end_msg $?
 }
 do_stop () {
