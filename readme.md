@@ -87,7 +87,7 @@ Mount as /shared on boot
     git clone https://github.com/jedahan/piwall.git
     cd piwall
 
-### Install the shared files and init scripts
+### Install the shared files, and init scripts
 
     cp shared/* /shared/
     sudo cp -r init/* /etc/init.d
@@ -112,17 +112,16 @@ These packages were downloaded from [dl.piwall.co.uk](dl.piwall.co.uk)
 
     sudo apt-get install libav-tools
 
-## For each the tiles
+# For each tile
 
 Enable the piwalltile init script
 
     sudo update-rc.d piwalltile defaults
 
-Copy the appropriate config for the left or right tile
+Install the default config
 
     cp .piwall ~
-    cp .pitile-left ~/.pitile
-    #cp .pitile-right ~/.pitile
+    cp .pitile ~
 
 ## For the Server
 
