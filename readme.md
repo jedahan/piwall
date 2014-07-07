@@ -60,11 +60,6 @@ Download and burn raspbian onto an sd card, from your local machine
 
 Use raspi-config to change the keyboard layout and enable ssh.
 
-### Clone this respository
-
-    git clone https://github.com/jedahan/piwall.git
-    cd piwall
-
 ### Update the distribution
 
     sudo apt-get update
@@ -75,33 +70,37 @@ Use raspi-config to change the keyboard layout and enable ssh.
 
 Add a 0B (W95 FAT32) partition where the free space was
 
-    sudo apt-get install dosfstools
     sudo cfdisk /dev/mmcblk0
     sudo reboot
 
 Mount as /shared on boot
 
+    sudo apt-get install dosfstools
     sudo mkfs.msdos /dev/mmcblk0p3
     sudo mkdir /shared
     sudo chown pi:pi /shared
-    sudo sh -c "echo '/dev/mmcblk0p3    /shared    vfat    auto,rw,user,users,exec,noatime,uid=1000,gid=1000,umask=000    0    0' >> /etc/fstab"
+    sudo sh -c "echo '/dev/mmcblk0p3 /shared vfat auto,rw,user,users,exec,noatime,uid=1000,gid=1000,umask=000 0 0' >> /etc/fstab"
     sudo mount -a
 
-### Install the shared files
+### Clone this respository
+
+    git clone https://github.com/jedahan/piwall.git
+    cd piwall
+
+### Install the shared files and init scripts
 
     cp shared/* /shared/
+    sudo cp -r init/* /etc/init.d
 
 ### Install a splash screen & the splash screen updater
 
     sudo apt-get install fbi
-    sudo cp -r initscripts/splashscreen /etc/init.d
-    sudo update-rc.d asplashscreen defaults
-    sudo cp -r initscripts/updatesplash /etc/init.d
+    sudo update-rc.d splashscreen defaults
     sudo update-rc.d updatesplash defaults
 
 ### Hide the boot text
 
-    sudo sed -e 's/tty1/tty3' -e 's/$/ loglevel=3 vt.global_cursor_default=0 logo.nologo' -i /boot/cmdline.txt
+    sudo sed -e 's/tty1/tty3/' -e 's/$/ loglevel=3 vt.global_cursor_default=0 logo.nologo/' -i /boot/cmdline.txt
 
 ### Install piwall
 
@@ -109,31 +108,26 @@ These packages were downloaded from [dl.piwall.co.uk](dl.piwall.co.uk)
 
     sudo dpkg -i packages/*
 
-## For each the tiles
-
-Install the init script
-
-    sudo cp -r init/*tile* /etc/init.d
-    sudo update-rc.d piwalltile defaults
-
-Change the config to be correct for each tile
-
-    sudo nano /etc/init.d/starttile.sh
-    cp .piwall /home/pi
-
-Copy the appropriate config for the left or right tile
-
-    cp .pitile-left /home/pi/.pitile
-
-## For the Server
-
-Make sure we can convert video
+### Make sure we can convert video
 
     sudo apt-get install libav-tools
 
-Install the init script
+## For each the tiles
 
-    sudo cp -r initscripts/*server* /etc/init.d
+Enable the piwalltile init script
+
+    sudo update-rc.d piwalltile defaults
+
+Copy the appropriate config for the left or right tile
+
+    cp .piwall ~
+    cp .pitile-left ~/.pitile
+    #cp .pitile-right ~/.pitile
+
+## For the Server
+
+Enable the server init script
+
     sudo update-rc.d piwallserver defaults
 
 ### Change the networking
@@ -141,8 +135,9 @@ Install the init script
 Install the network changing scripts
 
     sudo cp /etc/network/interfaces{,.bak}
-    alias lan=/home/pi/piwall/network/localnetwork.sh
-    alias wan=/home/pi/piwall/network/globalnetwork.sh
+    echo 'alias lan=/home/pi/piwall/network/localnetwork.sh' >> ~/.bashrc
+    echo 'alias wan=/home/pi/piwall/network/globalnetwork.sh >> ~/.bashrc
+    source ~/.bashrc
 
 Make sure to choose different octets for each pi
 
