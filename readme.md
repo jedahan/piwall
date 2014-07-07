@@ -113,8 +113,7 @@ Make sure we can convert video
 
 Install the default config
 
-    cp .piwall ~
-    cp .pitile ~
+    sudo cp .pi* /root/
 
 ### Setup networking
 
