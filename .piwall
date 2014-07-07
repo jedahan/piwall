@@ -1,5 +1,5 @@
 [leftrightwall]
-width=3840
+width=1920
 height=1080
 x=0
 y=0
@@ -8,16 +8,16 @@ y=0
 [left_lrw]
 wall=leftrightwall
 width=1920
-height=1080
+height=540
 x=0
 y=0
 
 [right_lrw]
 wall=leftrightwall
 width=1920
-height=1080
-x=1920
-y=0
+height=540
+x=0
+y=540
 
 # config
 [leftright]

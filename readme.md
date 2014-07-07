@@ -51,7 +51,7 @@ Mount as /shared on boot
     sudo mkfs.msdos /dev/mmcblk0p3
     sudo mkdir /shared
     sudo chown pi:pi /shared
-    sudo sh -c "echo '/dev/mmcblk0p3    /mnt/storage    vfat    auto,rw,user,users,exec,noatime,uid=1000,gid=1000,umask=000    0    0' >> /etc/fstab"
+    sudo sh -c "echo '/dev/mmcblk0p3    /shared    vfat    auto,rw,user,users,exec,noatime,uid=1000,gid=1000,umask=000    0    0' >> /etc/fstab"
     sudo mount -a
 
 ### Install the shared files
