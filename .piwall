@@ -20,6 +20,6 @@ x=1920
 y=0
 
 # config
-[wall]
+[leftright]
 left=left_lrw
 right=right_lrw
