@@ -25,12 +25,11 @@ Place splash.jpg in the 'Untitled' volume. It will take 2 full boots for the scr
     nano piwall/network/interfaces.local
     lan
 
-### optional: change to the appropriate tile id
+### if you are a tile, make sure you have the appropriate id
 
-    cp -f ~/piwall/.pitile-left ~/.pitile
-    #cp ~/piwall/.pitile-right ~/.pitile
+    nano ~/.pitile
 
-### if you are the server, switch to piwallserver on boot instead of piwalltile
+### if you are the server, switch to the piwallserver init script
 
     sudo rc-update piwalltile remove defaults
     sudo rc-update piwallserver add defaults
@@ -102,40 +101,28 @@ Mount as /shared on boot
 
     sudo sed -e 's/tty1/tty3/' -e 's/$/ loglevel=3 vt.global_cursor_default=0 logo.nologo/' -i /boot/cmdline.txt
 
-### Install piwall
+### Install piwall applications and default wall config
 
 These packages were downloaded from [dl.piwall.co.uk](dl.piwall.co.uk)
 
     sudo dpkg -i packages/*
 
-### Make sure we can convert video
+Make sure we can convert video
 
     sudo apt-get install libav-tools
-
-# For each tile
-
-Enable the piwalltile init script
-
-    sudo update-rc.d piwalltile defaults
 
 Install the default config
 
     cp .piwall ~
     cp .pitile ~
 
-## For the Server
-
-Enable the server init script
-
-    sudo update-rc.d piwallserver defaults
-
-### Change the networking
+### Setup networking
 
 Install the network changing scripts
 
     sudo cp /etc/network/interfaces{,.bak}
     echo 'alias lan=/home/pi/piwall/network/localnetwork.sh' >> ~/.bashrc
-    echo 'alias wan=/home/pi/piwall/network/globalnetwork.sh >> ~/.bashrc
+    echo 'alias wan=/home/pi/piwall/network/globalnetwork.sh' >> ~/.bashrc
     source ~/.bashrc
 
 Make sure to choose different octets for each pi
@@ -145,3 +132,13 @@ Make sure to choose different octets for each pi
 Now you can switch just by doing `lan` or `wan`
 
     lan
+
+# Enable the correct init scripts
+
+### For each tile
+
+    sudo update-rc.d piwalltile defaults
+
+### For the Server
+
+    sudo update-rc.d piwallserver defaults
