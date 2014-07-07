@@ -1,0 +1,25 @@
+[leftrightwall]
+width=3840
+height=1080
+x=0
+y=0
+
+# corresponding tile definitions
+[left_lrw]
+wall=leftrightwall
+width=1920
+height=1080
+x=0
+y=0
+
+[right_lrw]
+wall=leftrightwall
+width=1920
+height=1080
+x=1920
+y=0
+
+# config
+[wall]
+left=left_lrw
+right=right_lrw

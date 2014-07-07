@@ -86,7 +86,11 @@ Install the init script
 Change the config to be correct for each tile
 
     sudo nano /etc/init.d/starttile.sh
+    cp .piwall /home/pi
 
+Copy the appropriate config for the left or right tile
+
+    cp .pitile-left /home/pi/.pitile
 
 ## For the Server
 
