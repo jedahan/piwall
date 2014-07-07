@@ -121,6 +121,7 @@ Install the default config
 Install the network changing scripts
 
     sudo cp /etc/network/interfaces{,.bak}
+    sudo cp network/interfaces* /etc/network
     echo 'alias lan=/home/pi/piwall/network/localnetwork.sh' >> ~/.bashrc
     echo 'alias wan=/home/pi/piwall/network/globalnetwork.sh' >> ~/.bashrc
     source ~/.bashrc
