@@ -16,7 +16,7 @@ Here are all the steps required to get from a blank sd card to this working setu
 
 Download and burn raspbian onto an sd card, from your local machine
 
-    curl -OL http://downloads.raspberrypi.org/raspbian_latest -o raspbian.zip
+    curl -L http://downloads.raspberrypi.org/raspbian_latest -o raspbian.zip
     unzip raspbian.zip
     sudo diskutil umount /dev/rdisk1s1
     sudo dd bs=1m if=2014-06-20-wheezy-raspbian.img of=/dev/rdisk1
