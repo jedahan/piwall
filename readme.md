@@ -8,6 +8,39 @@ Place test.avi in the 'Untitled' volume.
 
 Place splash.jpg in the 'Untitled' volume. It will take 2 full boots for the screen to be fully updated.
 
+# Setup from premade image
+
+### install the image
+
+    curl -O jedahan.com/piwall.tar.gz
+    tar xf piwall.tar.gz
+    sudo diskutil unmount /dev/rdisk1s1
+    sudo dd bs=1m if=piwall.img of=/dev/rdisk1
+    sudo diskutil unmount /dev/rdisk1s1
+    sudo diskutil eject /dev/rdisk1
+
+### change the local ip address
+
+    wan
+    nano piwall/network/interfaces.local
+    lan
+
+### optional: change to the appropriate tile id
+
+    cp -f ~/piwall/.pitile-left ~/.pitile
+    #cp ~/piwall/.pitile-right ~/.pitile
+
+### if you are the server, switch to piwallserver on boot instead of piwalltile
+
+    sudo rc-update piwalltile remove defaults
+    sudo rc-update piwallserver add defaults
+
+### reboot
+
+    sudo reboot
+
+### change the piwall identifier
+
 # Setting up from scratch
 
 Here are all the steps required to get from a blank sd card to this working setup.
