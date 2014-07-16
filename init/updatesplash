@@ -1,11 +1,10 @@
 #! /bin/sh
 ### BEGIN INIT INFO
 # Provides:          updatesplash
-# Required-Start:
-# Required-Stop:
-# Should-Start:
-# Default-Start:     $all
-# Default-Stop:
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
 # Short-Description: Update splashscreen from shared partition
 # Description:       Update splashscreen from shared partition
 ### END INIT INFO
