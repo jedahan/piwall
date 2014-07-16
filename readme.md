@@ -2,43 +2,23 @@
 
 ## Changing the video
 
-Place test.avi in the 'Untitled' volume.
+Place test.h264 in the 'Untitled' volume, available on the server image.
 
 ## Changing the splash screen
 
-Place splash.jpg in the 'Untitled' volume. It will take 2 full boots for the screen to be fully updated.
+Place splash.jpg in the 'Untitled' volume on any of the screens. It will take 2 full boots for the screen to be fully updated.
 
-# Setup from premade image
+# Setup from premade images
+
+There are three images - one for the server, one for the left screen, one for the right screen
 
 ### install the image
 
-    curl -O jedahan.com/piwall.tar.gz
-    tar xf piwall.tar.gz
+    tar xf piwall-server.tar.gz # see piwall-left.tar.gz and piwall-right.tar.gz for the clients
     sudo diskutil unmount /dev/rdisk1s1
-    sudo dd bs=1m if=piwall.img of=/dev/rdisk1
+    sudo dd bs=16m if=piwall.img of=/dev/rdisk1
     sudo diskutil unmount /dev/rdisk1s1
     sudo diskutil eject /dev/rdisk1
-
-### change the local ip address
-
-    wan
-    nano piwall/network/interfaces.local
-    lan
-
-### if you are a tile, make sure you have the appropriate id
-
-    nano ~/.pitile
-
-### if you are the server, switch to the piwallserver init script
-
-    sudo rc-update piwalltile remove defaults
-    sudo rc-update piwallserver add defaults
-
-### reboot
-
-    sudo reboot
-
-### change the piwall identifier
 
 # Setting up from scratch
 
