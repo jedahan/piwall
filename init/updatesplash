@@ -31,7 +31,7 @@ case "$1" in
 		exit 0
 		;;
 	*)
-		echo "Usage: asplashscreen [start|stop]" >&2
+		echo "Usage: updatesplash [start|stop]" >&2
 		exit 3
 		;;
 esac
