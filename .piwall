@@ -1,6 +1,8 @@
+# this should be in /root/ for the initscripts to work right
+
 [leftrightwall]
 width=1920
-height=1080
+height=1088 # size of video file, we make it large because these screen are like 1920x546....
 x=0
 y=0
 
@@ -8,16 +10,16 @@ y=0
 [left_lrw]
 wall=leftrightwall
 width=1920
-height=540
+height=1080
 x=0
 y=0
 
 [right_lrw]
 wall=leftrightwall
 width=1920
-height=540
+height=1080
 x=0
-y=540
+y=548 # 540 + 8 pixel offset in the middle
 
 # config
 [leftright]
