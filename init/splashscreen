@@ -12,7 +12,7 @@
 
 
 do_start () {
-    /usr/bin/fbi -T 1 -noverbose -a /etc/splash.jpg
+    /usr/bin/fbi -T 1 -noverbose /etc/splash.jpg
     exit 0
 }
 
@@ -31,7 +31,7 @@ case "$1" in
     exit 0
     ;;
   *)
-    echo "Usage: asplashscreen [start|stop]" >&2
+    echo "Usage: splashscreen [start|stop]" >&2
     exit 3
     ;;
 esac
