@@ -1,10 +1,10 @@
 # Changing the videos and splash screens
 
-## Changing the video
+### Changing the video
 
 Place test.h264 in the 'Untitled' volume, available on the server image.
 
-## Changing the splash screen
+### Changing the splash screen
 
 Place splash.jpg in the 'Untitled' volume on any of the screens. It will take 2 full boots for the screen to be fully updated.
 
